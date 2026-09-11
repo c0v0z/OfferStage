@@ -1,0 +1,1 @@
+"""OfferSage application package."""

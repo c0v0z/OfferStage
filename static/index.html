@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>OfferSage · 求职助手</title>
+    <link rel="stylesheet" href="/static/styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="brand">
+        <span class="brand-mark">O</span>
+        <span>OfferSage</span>
+      </div>
+      <div class="topbar-meta"><span class="status-dot"></span><span id="health-text">本地工作区</span></div>
+    </header>
+
+    <main class="workspace">
+      <section class="intro-row">
+        <div>
+          <p class="eyebrow">CAREER WORKSPACE</p>
+          <h1>把每一次申请，变成更有准备的一次。</h1>
+          <p class="intro-copy">上传简历和职位描述，获得有依据的匹配分析、修改建议和模拟面试反馈。</p>
+        </div>
+        <div class="intro-note"><span class="note-label">原则</span><strong>只使用你真实提供的经历</strong><span>需要补充的数据会明确标注。</span></div>
+      </section>
+
+      <section class="profile-toolbar">
+        <div class="profile-copy"><span class="eyebrow">EXPERIENCE MEMORY</span><strong>候选人经历库</strong><small>把项目和经历保存下来，分析职位时自动检索最相关内容。</small></div>
+        <div class="profile-actions"><label for="profile-select">当前档案</label><select id="profile-select"><option value="">分析时自动创建</option></select><button id="new-profile-btn" class="secondary-button">新建档案 <span>+</span></button><button id="add-experience-btn" class="secondary-button">添加经历 <span>+</span></button></div>
+      </section>
+
+      <section class="input-grid">
+        <article class="panel input-panel">
+          <div class="panel-heading"><div><span class="step">01</span><h2>你的简历</h2></div><span class="format-note">TXT / PDF / DOCX</span></div>
+          <label class="upload-zone" for="resume-file"><span class="upload-icon">↑</span><span><strong>上传文件</strong><small>或将简历粘贴到下方</small></span><input id="resume-file" type="file" accept=".txt,.pdf,.docx" /></label>
+          <textarea id="resume-text" placeholder="姓名、教育背景、项目、技能和成果……"></textarea>
+        </article>
+        <article class="panel input-panel">
+          <div class="panel-heading"><div><span class="step">02</span><h2>目标职位</h2></div><span class="format-note">TXT / PDF / DOCX</span></div>
+          <label class="upload-zone" for="jd-file"><span class="upload-icon">↑</span><span><strong>上传文件</strong><small>或将职位描述粘贴到下方</small></span><input id="jd-file" type="file" accept=".txt,.pdf,.docx" /></label>
+          <textarea id="jd-text" placeholder="职位名称、工作职责、任职要求……"></textarea>
+        </article>
+      </section>
+
+      <div class="action-row"><span id="form-status" class="form-status"></span><button id="analyze-btn" class="primary-button">开始分析 <span>→</span></button></div>
+
+      <section id="results" class="results hidden">
+        <div class="results-header"><div><p class="eyebrow">APPLICATION REVIEW</p><h2 id="job-title">分析结果</h2><p id="analysis-conclusion" class="muted"></p><p id="analysis-source" class="analysis-source hidden"></p></div><div class="score-display"><span id="score-value">0</span><span>/ 100</span><small>匹配度</small></div></div>
+        <div class="metrics-grid"><div class="metric"><span class="metric-label">匹配要求</span><strong id="matched-count">0</strong><span>项</span></div><div class="metric"><span class="metric-label">待补充缺口</span><strong id="gap-count">0</strong><span>项</span></div><div class="metric"><span class="metric-label">下一步行动</span><strong id="next-count">0</strong><span>项</span></div></div>
+        <div class="detail-grid">
+          <article class="panel result-panel"><div class="panel-heading"><h3>你的优势</h3><span class="section-accent green"></span></div><div id="strengths" class="insight-list"></div></article>
+          <article class="panel result-panel"><div class="panel-heading"><h3>需要补齐</h3><span class="section-accent orange"></span></div><div id="gaps" class="insight-list"></div></article>
+        </div>
+        <article class="panel result-panel recommendations"><div class="panel-heading"><h3>行动建议</h3><span class="section-accent blue"></span></div><div id="recommendations" class="recommendation-list"></div></article>
+        <article class="panel result-panel retrieval-panel"><div class="panel-heading"><div><h3>检索到的相关经历</h3><p class="muted">这些内容已作为本次分析和改写的上下文</p></div><span class="section-accent green"></span></div><div id="retrieved-experiences" class="retrieved-list"></div></article>
+        <article class="panel result-panel next-steps"><div class="panel-heading"><h3>接下来做什么</h3><button id="rewrite-btn" class="secondary-button">生成定制化简历 <span>↗</span></button></div><ol id="next-steps-list"></ol><div id="rewrite-output" class="rewrite-output hidden"></div></article>
+        <article class="panel result-panel interview-panel"><div class="panel-heading"><div><h3>模拟面试</h3><p class="muted">针对这个职位进行多轮练习</p></div><button id="interview-start-btn" class="secondary-button">开始模拟面试 <span>↗</span></button></div><div id="interview-output" class="interview-output"><div class="empty-state">完成分析后，开始一轮 5 题模拟面试。</div></div></article>
+      </section>
+
+      <section class="history-section"><div class="section-title-row"><div><p class="eyebrow">RECENT REVIEWS</p><h2>最近的分析</h2></div><button id="refresh-history" class="icon-button" title="刷新历史记录">↻</button></div><div id="history-list" class="history-list"><div class="empty-state">还没有分析记录。</div></div></section>
+    </main>
+    <script src="/static/app.js"></script>
+  </body>
+</html>
